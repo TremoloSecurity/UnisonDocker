@@ -45,10 +45,3 @@ ENV JAVA_OPTS -XX:+UseParallelGC  -Djava.security.egd=file:/dev/./urandom
 
 
 CMD /usr/local/tremolo/tremolo-service/bin/firstStart.sh
-
-
-#touch /usr/local/tremolo/tremolo-service/apps/proxy/auth/x && \
-#touch /usr/local/tremolo/tremolo-service/conf/x && \
-#touch /usr/local/tremolo/tremolo-service/apps/proxy/WEB-INF/x && \
-#touch /usr/local/tremolo/tremolo-service/apps/tremolo-admin/WEB-INF/x && \
-#touch /usr/local/tremolo/tremolo-service/apps/webservices/WEB-INF/x && \
