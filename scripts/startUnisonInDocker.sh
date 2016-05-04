@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DISPLAY=:0.0
-export TREMOLO_ROOT="/usr/local/tremolo-service"
+export TREMOLO_ROOT="/usr/local/tremolo/tremolo-service"
 export TREMOLO_HOME="$TREMOLO_ROOT/external"
 export TREMOLO_PROXY_HOME="$TREMOLO_HOME/apps/proxy"
 export TREMOLO_ADMIN_HOME="$TREMOLO_HOME/apps/tremolo-admin"
