@@ -13,7 +13,7 @@ ENV MYSQL_JDBC_VERSION 5.1.38
 USER root
 ADD scripts/firstStart.sh /tmp/firstStart.sh
 ADD scripts/startUnisonInDocker.sh /tmp/startUnisonInDocker.sh
-ADD conf/log4j2.xml /tmp/log4j2.xml
+ADD conf/log4j.xml /tmp/log4j.xml
 
 
 
