@@ -8,6 +8,7 @@ EXPOSE 9093
 
 ENV UNISON_VERSION 1.0.7
 ENV MYSQL_JDBC_VERSION 5.1.38
+ENV PGSQL_JDBC_VERSION 9.4.1209.jre7
 
 
 USER root
@@ -26,6 +27,7 @@ RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecuri
   mkdir /tmp/drivers && \
   cd /tmp/drivers && \
   curl -L -O http://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_JDBC_VERSION}/mysql-connector-java-${MYSQL_JDBC_VERSION}.jar && \
+  curl -L -O http://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${PGSQL_JDBC_VERSION}/postgresql-${PGSQL_JDBC_VERSION}.jar && \
   mkdir /usr/local/tremolo/tremolo-service/external && \
   mv /tmp/firstStart.sh /usr/local/tremolo/tremolo-service/bin/ && \
   mv /tmp/startUnisonInDocker.sh /usr/local/tremolo/tremolo-service/bin/ && \
