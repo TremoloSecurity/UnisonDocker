@@ -6,25 +6,28 @@ EXPOSE 8080
 EXPOSE 8443
 EXPOSE 9093
 
-ENV UNISON_VERSION 1.0.6
+ENV UNISON_VERSION 1.0.7
 ENV MYSQL_JDBC_VERSION 5.1.38
+ENV PGSQL_JDBC_VERSION 9.4.1209.jre7
 
 
 USER root
 ADD scripts/firstStart.sh /tmp/firstStart.sh
 ADD scripts/startUnisonInDocker.sh /tmp/startUnisonInDocker.sh
-ADD conf/log4j.xml /tmp/log4j.xml
+ADD conf/log4j2.xml /tmp/log4j2.xml
 
 
 
-RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecurity.com/docs/tremolosecurity-docs/configs/tremolosecurity.repo;yum -y install unison-$UNISON_VERSION && \
+RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecurity.com/docs/tremolosecurity-docs/configs/tremolosecurity-1.0.7.repo;yum -y install unison-$UNISON_VERSION && \
   userdel tremoloadmin && \
   groupadd -r tremoloadmin -g 433 && \
   useradd  -u 431 -r -g tremoloadmin -d /usr/local/tremolo/tremolo-service -s /sbin/nologin -c "Unison Docker image user" tremoloadmin && \
-  mv /tmp/log4j.xml /usr/local/tremolo/tremolo-service/apps/proxy/WEB-INF/log4j.xml && \
+  rm /usr/local/tremolo/tremolo-service/conf/log4j2.xml && \
+  mv /tmp/log4j2.xml /usr/local/tremolo/tremolo-service/conf/log4j2.xml && \
   mkdir /tmp/drivers && \
   cd /tmp/drivers && \
   curl -L -O http://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_JDBC_VERSION}/mysql-connector-java-${MYSQL_JDBC_VERSION}.jar && \
+  curl -L -O http://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${PGSQL_JDBC_VERSION}/postgresql-${PGSQL_JDBC_VERSION}.jar && \
   mkdir /usr/local/tremolo/tremolo-service/external && \
   mv /tmp/firstStart.sh /usr/local/tremolo/tremolo-service/bin/ && \
   mv /tmp/startUnisonInDocker.sh /usr/local/tremolo/tremolo-service/bin/ && \
