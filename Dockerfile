@@ -18,7 +18,7 @@ ADD conf/log4j2.xml /tmp/log4j2.xml
 
 
 
-RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecurity.com/docs/tremolosecurity-docs/configs/tremolosecurity-1.0.7.repo;yum -y install unison-$UNISON_VERSION && \
+RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecurity.com/docs/tremolosecurity-docs/configs/tremolosecurity-1.0.8.repo;yum -y install ts-unison-$UNISON_VERSION && \
   userdel tremoloadmin && \
   groupadd -r tremoloadmin -g 433 && \
   useradd  -u 431 -r -g tremoloadmin -d /usr/local/tremolo/tremolo-service -s /sbin/nologin -c "Unison Docker image user" tremoloadmin && \
