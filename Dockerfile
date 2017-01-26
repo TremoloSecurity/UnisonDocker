@@ -26,8 +26,8 @@ RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecuri
   mv /tmp/log4j2.xml /usr/local/tremolo/tremolo-service/conf/log4j2.xml && \
   mkdir /tmp/drivers && \
   cd /tmp/drivers && \
-  curl -L -O http://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_JDBC_VERSION}/mysql-connector-java-${MYSQL_JDBC_VERSION}.jar && \
-  curl -L -O http://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${PGSQL_JDBC_VERSION}/postgresql-${PGSQL_JDBC_VERSION}.jar && \
+  curl -L -O https://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_JDBC_VERSION}/mysql-connector-java-${MYSQL_JDBC_VERSION}.jar && \
+  curl -L -O https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${PGSQL_JDBC_VERSION}/postgresql-${PGSQL_JDBC_VERSION}.jar && \
   mkdir /usr/local/tremolo/tremolo-service/external && \
   mv /tmp/firstStart.sh /usr/local/tremolo/tremolo-service/bin/ && \
   mv /tmp/startUnisonInDocker.sh /usr/local/tremolo/tremolo-service/bin/ && \
