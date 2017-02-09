@@ -47,6 +47,6 @@ NOTE that these ports are defaults and can be configured inside of the Unison ad
 
 ### Example Docker Command
 ```
-docker run -d -p 9090:9090 -p 389:10983 -p 636:10636 -p 80:8080 -p 443:8443 --name unison -v /var/lib/docker-volumes/unison:/usr/local/tremolo/tremolo-service/external:Z  tremolosecurity/unison:1.0.7
+docker run -d -p 9090:9090 -p 389:10983 -p 636:10636 -p 80:8080 -p 443:8443 --name unison -v /var/lib/docker-volumes/unison:/usr/local/tremolo/tremolo-service/external:Z  tremolosecurity/unison:1.0.8
 ```
 Once the container is running, it can be connected to with https://docker.host:9090 to configure the license and initial security information.
