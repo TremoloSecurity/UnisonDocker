@@ -12,7 +12,8 @@ Tremolo Security's Unison combines the identity management functions most needed
 
 ## Available Tags
 
-* latest (1.0.8)
+* latest (1.0.9)
+* 1.0.9
 * 1.0.8
 * 1.0.7
 * 1.0.6
