@@ -6,7 +6,7 @@ EXPOSE 8080
 EXPOSE 8443
 EXPOSE 9093
 
-ENV UNISON_VERSION 1.0.13.2
+ENV UNISON_VERSION 1.0.13
 ENV MYSQL_JDBC_VERSION 5.1.38
 ENV PGSQL_JDBC_VERSION 9.4.1209.jre7
 
@@ -18,10 +18,15 @@ ADD conf/log4j2.xml /tmp/log4j2.xml
 
 
 
-RUN yum -y install wget which;cd /etc/yum.repos.d;wget https://www.tremolosecurity.com/docs/tremolosecurity-docs/configs/tremolosecurity-1.0.8.repo;yum -y install ts-unison-$UNISON_VERSION && \
-  userdel tremoloadmin && \
+RUN yum -y install wget which java-1.8.0-openjdk-devel;cd /etc/yum.repos.d && \
   groupadd -r tremoloadmin -g 433 && \
   useradd  -u 431 -r -g tremoloadmin -d /usr/local/tremolo/tremolo-service -s /sbin/nologin -c "Unison Docker image user" tremoloadmin && \
+  cd /tmp && \
+  wget https://www.tremolosecurity.com/dwn/tremolosecurity-downloads/unison/${UNISON_VERSION}/tremolo-service-${UNISON_VERSION}.tar.gz && \
+  tar -xvzf tremolo-service-${UNISON_VERSION}.tar.gz && \
+  mkdir -p /usr/local/tremolo/tremolo-service && \
+  mv /tmp/tremolo-service-${UNISON_VERSION}/* /usr/local/tremolo/tremolo-service && \
+  rm -rf /tmp/tremolo-service-* && \
   rm /usr/local/tremolo/tremolo-service/conf/log4j2.xml && \
   mv /tmp/log4j2.xml /usr/local/tremolo/tremolo-service/conf/log4j2.xml && \
   mkdir /tmp/drivers && \
